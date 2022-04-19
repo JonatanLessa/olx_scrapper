@@ -1,0 +1,52 @@
+<Schema name="New Schema1">
+  <Dimension type="StandardDimension" visible="true" name="DimTempo">
+    <Hierarchy name="Tempo" visible="true" hasAll="true" primaryKey="ID_TEMPO">
+      <Table name="dm_tempo" alias="">
+      </Table>
+      <Level name="Ano" visible="true" table="dm_tempo" column="ANO" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="DimLocal">
+    <Hierarchy name="Local" visible="true" hasAll="true" primaryKey="ID_LOCAL">
+      <Table name="dm_local" alias="">
+      </Table>
+      <Level name="Municipio" visible="true" table="dm_local" column="CIDADE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="DimVeiculo">
+    <Hierarchy name="Veiculo" visible="true" hasAll="true" primaryKey="ID_VEICULO">
+      <Table name="dm_veiculo" alias="">
+      </Table>
+      <Level name="Marca" visible="true" table="dm_veiculo" column="MARCA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Modelo" visible="true" table="dm_veiculo" column="MODELO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="DimAnunciante">
+    <Hierarchy name="New Hierarchy 0" visible="true" hasAll="true" primaryKey="ID_ANUNCIANTE">
+      <Table name="dm_anunciante" alias="">
+      </Table>
+      <Level name="Tipo" visible="true" table="dm_anunciante" column="TIPO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Nome" visible="true" table="dm_anunciante" column="NOME" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="dwCuboVehicles" visible="true" cache="true" enabled="true">
+    <Table name="dm_fato_anuncios" alias="">
+    </Table>
+    <DimensionUsage source="DimTempo" name="DimTempo" visible="true" foreignKey="TEMPO_ID_TEMPO">
+    </DimensionUsage>
+    <DimensionUsage source="DimLocal" name="DimLocal" visible="true" foreignKey="LOCAL_ID_LOCAL">
+    </DimensionUsage>
+    <DimensionUsage source="DimVeiculo" name="DimVeiculo" visible="true" foreignKey="VEICULO_ID_VEICULO">
+    </DimensionUsage>
+    <DimensionUsage source="DimAnunciante" name="DimAnunciante" visible="true" foreignKey="ANUNCIANTE_ID_ANUNCIANTE">
+    </DimensionUsage>
+    <Measure name="Valor" column="PRECO" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
