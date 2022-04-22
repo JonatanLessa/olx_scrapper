@@ -1,6 +1,6 @@
+from time import sleep
 from db_connection import insert_place, insert_vehicle, insert_advertiser, insert_date, insert_fact_ads, insert_TPM_ETL, close_db_connection
 from chrome_driver import get_driver, find_element_by_xpath, wait_element_load
-
 driver = get_driver()
 
 for page in range(1):
@@ -38,8 +38,9 @@ for page in range(1):
             publication_data = find_element_by_xpath(content_base_xpath + 'div[38]/div/div/div/span[1]').text
             print(publication_data)
 
-            wait_element_load('miniprofile')
-            advertiser_name = find_element_by_xpath('//*[@id="miniprofile"]/div/div/div[2]/div[2]/div/div[2]').text
+            #wait_element_load('miniprofile')
+            sleep(10)
+            advertiser_name = find_element_by_xpath("//span[@class='sc-fBuWsC sc-kkwfeq fPNDcX sc-jQMNup hDdGUP sc-ifAKCX cmFKIN']").text
             if advertiser_name == '':
                 advertiser_name = 'Não Informado'                
             print(advertiser_name)
@@ -101,7 +102,7 @@ for page in range(1):
             continue
 
 insert_place()
-insert_vehicle()
+insert_vehicle()ñ
 insert_advertiser()
 insert_date()
 insert_fact_ads()
