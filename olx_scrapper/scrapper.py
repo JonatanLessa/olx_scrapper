@@ -24,9 +24,9 @@ for page in range(1):
             wait_element_load('content')
 
             content_base_xpath = '//*[@id="content"]/div[2]/div/div[2]/div[1]/'
-            brand = find_element_by_xpath(content_base_xpath + 'div[34]/div/div/div/div[4]/div[3]/div/div[2]/a').text
-            model = find_element_by_xpath(content_base_xpath + 'div[34]/div/div/div/div[4]/div[2]/div/div[2]/a').text
-            vehicle_year = find_element_by_xpath(content_base_xpath + 'div[34]/div/div/div/div[4]/div[5]/div/div[2]/a').text
+            brand = find_element_by_xpath(content_base_xpath + 'div[34]/div/div/div/div[4]/div[3]/div/div[2]/a').text.upper()
+            model = find_element_by_xpath(content_base_xpath + 'div[34]/div/div/div/div[4]/div[2]/div/div[2]/a').text.upper()
+            vehicle_year = find_element_by_xpath(content_base_xpath + 'div[34]/div/div/div/div[4]/div[5]/div/div[2]/a').text.upper()
             vehicle_power = 'unknown'            
             km = find_element_by_xpath(content_base_xpath + 'div[34]/div/div/div/div[4]/div[6]/div/div[2]/span[2]').text
             print(brand)
@@ -35,7 +35,7 @@ for page in range(1):
             print(vehicle_power)
             print(km)
             
-            publication_data = find_element_by_xpath(content_base_xpath + 'div[38]/div/div/div/span[1]').text
+            publication_data = find_element_by_xpath(content_base_xpath + 'div[38]/div/div/div/span[1]').text.upper()
             print(publication_data)
 
             #wait_element_load('miniprofile')
@@ -102,7 +102,7 @@ for page in range(1):
             continue
 
 insert_place()
-insert_vehicle()ñ
+insert_vehicle()
 insert_advertiser()
 insert_date()
 insert_fact_ads()
