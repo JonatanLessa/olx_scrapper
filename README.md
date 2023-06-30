@@ -1,4 +1,4 @@
-# Scrapper OLX, ETL, DW e OLAP
+# Scrapper OLX, ETL, DW e OLAP(DEPRECATED)
 <p align="center">Scrapper OLX usando a categoria Veículos como exemplo com ETL, carga em DW e OLAP</p>
 
 </h4>
